@@ -1,15 +1,21 @@
 let timerDiv = document.querySelector("#time")
 let startScreen = document.querySelector("#start-screen");
 const question = document.getElementById("questions");
-var currentQuestion = 0;
+
 let highscoresButton = document.querySelector(".scores")
 let choicesButton = document.querySelector("#choices")
 let endscreen = document.querySelector("#end-screen")
 let submitButton = document.querySelector("#submit")
+let feedback = document.querySelector("#feedback")
+let highscores = document.querySelector("#highscores")
+let clearHighscoresButton = document.querySelector("#clear")
 
+var currentQuestion = 0;
 let timeRemaining = 75;
 let score = 0;
 let interval;
+
+
 
 //function that starts the quiz and timer
 // start button
@@ -28,7 +34,7 @@ function startQuiz() {
 // Show question function
 function showQuestion() {
     question.classList.remove("hide");
-
+    
     const questionTitle = document.querySelector("#question-title")
     
     questionTitle.textContent = questionBank[currentQuestion].question;
@@ -44,7 +50,9 @@ function showQuestion() {
         choices.appendChild(button);
     }
     currentQuestion++;
+
 }
+
 
 // check answer function
 function checkAnswer(event) {
@@ -53,7 +61,6 @@ function checkAnswer(event) {
     } else {
         timeRemaining -= 10;
     }
-    currentQuestion++;
     if (currentQuestion === questionBank.length) {
         endQuiz();
     } else {
